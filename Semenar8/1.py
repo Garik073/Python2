@@ -64,13 +64,19 @@ def search_contact():
                 print(line)
             
         
-        
-        
-
-                 
+def Replacement(): 
+    global id
+    id = str(input("Seach text: "))
+    newid =str(input("New text: "))
+    with open(file_base, 'r', encoding="utf-8") as f:
+        data = f.read()
+        data = data.replace(id, newid)
+        with open(file_base, 'w', encoding="utf-8") as f:
+            f.write(data)
     
-       
-           
+    
+    
+              
 
 
 def main_menu():
@@ -82,7 +88,8 @@ def main_menu():
                        "2. Add a record\n"
                        "3. Search a record\n"
                        "4. Delete\n"
-                       "5. Exit\n")
+                       "5. Replacement\n"
+                       "6. Exit\n")
         match answer:
             case "1":
                 show_all()
@@ -93,6 +100,8 @@ def main_menu():
             case "4":
                 delete_contact()
             case "5":
+                Replacement()   
+            case "6":
                 play = False
             case _:
                 print("Try again!\n")
